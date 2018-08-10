@@ -1,0 +1,8 @@
+<div class="text-white font-weight-bold">
+  <p>Top Reviewers</p> 
+  <% reviews.sort((a,b)=>{return b.review_counter-a.review_counter; });%> 
+  <% reviews=reviews.slice(0,6); %>
+   <% reviews.forEach(obj=>{ %> 
+  <a href="#" class="text-white font-weight-bold"><p><%=obj.user_name%>-  <small><%=obj.review_counter%> reviews </small></p> <hr></a>
+     <% }); %>
+</div>

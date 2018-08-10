@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+    
+    <div class="container-fluid">
+      <div id="heading">
+        <h1 class="ml-auto">
+          Popular movies this week 
+        </h1> <hr>
+      </div>
+      
+      
+      <div id="popular">
+       <div class = "text-center">
+          <% popular.forEach(obj=>{ %> 
+         <a href="#"><img src = <%= obj.poster %> ></a>
+           <% }); %>
+      </div>
+      </div>
+      
+      <% include partials/recent-reviews.ejs %>
+
+    </div>
+  </body>
+    <% include partials/footer.ejs %>
+</html>

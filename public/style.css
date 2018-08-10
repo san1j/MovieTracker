@@ -40,7 +40,7 @@ h3,#uses {
   padding-top:2%;
 }
 
-#login{
+#login, #signUp{
   margin-top:10%;
   padding:3%;
   border: 1px solid grey;
@@ -84,11 +84,48 @@ hr {
   background-color:#303030;
 
 }
+#reviews a:hover{
+  text-decoration: none;
+  background-color:grey;
+}
 #reviews img{
   margin-right:2%;
 }
-
+#reviews a h3:hover, .side a:hover{
+  color:white;
+  font-size:1.7vw;
+}
+#popular img{
+  border: 3px solid white;
+}
+#popular img:hover{
+  border: 6px solid white;
+}
 #reviews h3{
    color:#DCDCDC;
 }
+#reviews{
+  position:relative;
+}
+
+#nowPlaying img:hover,#reviews img:hover {
+  border: 3px solid white;
+}
+
+.side{
+  margin:5%;
+  margin-top:0;
+  background-color:black;
+  padding:2%;
+  padding-top:0;
+}
+
+.side hr{
+   border-width: 1px;
+    border-color:grey;
+}
+
  
+.table{
+  margin-left:6%;
+}

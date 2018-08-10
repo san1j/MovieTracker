@@ -5,18 +5,21 @@
   <body>
     <% include partials/header.ejs %>
     <div class="container-fluid">
+      
       <div id="heading">
         <h1 class="text-center">
           Track, organize and review your movies!
         </h1>
       </div>
+      
       <div id="nowPlaying">
        <div id ="movies" class = "text-center">
           <% nowPlaying.forEach(obj=>{ %> 
-          <img src = <%= obj.poster %> >
-          <% }); %>
+          <a href="#"><img src = <%= obj.poster %> > </a>
+           <% }); %>
       </div>
       </div>
+      
       <div class="row" id = "uses">
         <div class="jumbotron jumbotron-fluid col-md-4">
          <h3 class= "fa fa-film fa-2x"> Deciding what to watch next?</h3>
@@ -27,19 +30,9 @@
               <p class="lead">Add and review movies as you watch them. See what others are watching.</p>
       </div>
       </div>
-      <div id = "recent-reviews">
-        <h3>Recent reviews<hr></h3>
-      </div>
-      <div id ="reviews">
-          <% reviews.forEach(obj=>{ %> 
-           <div class="jumbotron jumbotron-fluid col-md-6">
-            <img class="pull-left" src = <%= obj.movie_poster %> >
-            <h3><%=obj.movie_title%></h3>
-            <h3><%=obj.user_name%></h3>
-            <h3><%=obj.review_body%></h3>
-         </div>
-          <% }); %>
-       </div>
+
+      <% include partials/recent-reviews.ejs %>
+
     </div>
   </body>
           <% include partials/footer.ejs %>

@@ -1,5 +1,5 @@
 {
-  "name": "MovieDiary",
+  "name": "MovieTracker",
   "version": "0.0.1",
   "description": "A Node app built on Express",
   "main": "app.js",
