@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+    <div class="container-fluid">
+      
+      <div id="heading">
+        <h1 class="text-center">
+          Track, organize and review your movies!
+        </h1>
+      </div>
+      
+      <div id="nowPlaying">
+       <div id ="movies" class = "text-center">
+          <% nowPlaying.forEach(obj=>{ %> 
+          <a href="#"><img src = <%= obj.poster %> > </a>
+           <% }); %>
+      </div>
+      </div>
+      
+      <div class="row" id = "uses">
+        <div class="jumbotron jumbotron-fluid col-md-4">
+         <h3 class= "fa fa-film fa-2x"> Deciding what to watch next?</h3>
+              <p class="lead">You're in the right place. We'll send you personalized updates on new movies based on your tastes.</p>
+      </div>
+      <div class="jumbotron jumbotron-fluid col-md-4">
+         <h3 class= "fa fa-book fa-2x"> Start a movie diary today!</h3>
+              <p class="lead">Add and review movies as you watch them. See what others are watching.</p>
+      </div>
+      </div>
+
+      <% include partials/recent-reviews.ejs %>
+
+    </div>
+  </body>
+          <% include partials/footer.ejs %>
+</html>
+
+
+
+
+ 

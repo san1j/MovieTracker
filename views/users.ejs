@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body style="margin-top:2%;">
+    <% include partials/header.ejs %>
+    <div class="container-fluid col-md-7 pull-left">
+      
+       <div id="heading" style="margin-left:7%">
+        <h1 class="ml-auto">
+          Our users
+        </h1>  
+      </div>
+      
+      <table class="table text-white table-dark table-hover text-center">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Movies watched</th>
+            <th scope="col">Reviews</th>
+          </tr>
+        </thead>
+         <tbody>
+           <% users.forEach(obj=>{ %> 
+          <tr>
+             <td><%=obj.name%></td>
+            <td class="text-success fa fa-eye"> &nbsp;<%=obj.movies_watched%></td>
+            <td class="text-danger"><i class="fa fa-comment"></i><%=obj.review_count%></td>
+          </tr>
+            <% }); %>
+        </tbody>
+      </table>
+      
+      
+     </div>
+    <div class = "col-md-3 side position-sticky pull-right" style="margin-top:6%;">
+           <% include partials/sidepanel.ejs %>
+          </div>
+       
+
+  </body>
+    <% include partials/footer.ejs %>
+</html>

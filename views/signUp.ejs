@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+    <div class="container col-xs-12 col-sm-8 col-md-6 mx-auto" id = "signUp">
+	
+		<form class="border-class" th:action="/signUp" method="POST">
+			<div class="form-group">
+				<label for="email">Email</label>
+<!-- 				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                           class="alert alert-danger"></div> -->
+				 <input type="email" placeholder="Email" class="form-control" required="true">
+			</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+<!-- 				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                           class="alert alert-danger"></div> -->
+				 <input type="text" placeholder="Username" class="form-control" required="true">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label> 
+<!-- 				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                           class="alert alert-danger"></div> -->
+				<input type="password" placeholder="Password" class="form-control" required="true"/>
+			</div>
+			<button type="submit" class="btn btn-info">Submit</button>
+		</form>
+	</div>
+	
+   </body>
+    <% include partials/footer.ejs %>
+</html>
