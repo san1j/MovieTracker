@@ -4,39 +4,51 @@
   <body>
     <% include partials/header.ejs %>
     
-      <div class = "container container-fluid col-lg-10 mx-auto" style="margin:5%">
-       <% user_reviews.forEach(obj=>{ %> 
+      <div class = "container container-fluid col-md-10 mx-auto" style="margin:5%;">
 
         <div id="profile" style="margin-left:2%;margin-top:1%;" class="pull-left">
-          <h1 class="ml-auto h1 text-white"><%= obj.user_name %></h1>  
-          <h6 style="color:#dcdcdc"><%= obj.movies_watched %> movies watched</h6>  
-          <h6 style="color:#dcdcdc"><%= obj.review_count %> reviews</h6>  
+          <h1 class="ml-auto h1 text-white"><%= user_reviews[0].user_name %></h1>  
+          <h6 style="color:#dcdcdc"><%= user_reviews[0].movies_watched %> movies watched</h6>  
+          <h6 style="color:#dcdcdc"><%= user_reviews[0].review_count %> reviews</h6>  
         </div> 
       
         <div class="col-md-8 pull-left" style="margin-left:2%; margin-top:3%;color:#dcdcdc">
          <div class="col-md-12 pull-left" style=" color:#dcdcdc;">
-            Recently watched <a href="#" class="pull-right" style="margin-right:5%; color:#dcdcdc;">All</a>
+            Recently watched <a href="<%=user_reviews[0].user_name%>/all" class="pull-right" style="margin-right:5%; color:#dcdcdc;">All</a>
            <hr style ="border-color:#808080;padding-top:0">
          </div>
         
         <div class="col-md-12 pull-left">
-           <% obj.recently_watched.forEach(path=>{ %> 
-             <img src = <%=path%> style="margin-right:.5%;margin-left:5%" >  
+           <% user_reviews[0].recently_watched.forEach(path=>{ %> 
+             <img src = <%=path%> style="margin-right:.5%;margin-left:5%;border:1px solid white" >  
              <% }); %>
          </div>
         
-        <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc">
+        <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc;">
             Favorites <hr style ="border-color:#808080;">
          </div>
         <div class="col-md-12 pull-left">
-           <% obj.favorites.forEach(path=>{ %> 
-             <img src = <%=path%> style="margin-right:.5%;margin-left:5%" >  
+           <% user_reviews[0].favorites.forEach(path=>{ %> 
+             <img src = <%=path%> style="margin-right:.5%;margin-left:5%; border:1px solid white" >  
              <% }); %>
         </div>
+          
+          <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc">
+            Recently reviewed <hr style ="border-color:#808080;">
+         </div>
+        
+          <% user_reviews.forEach(obj=>{ %> 
+           <div class="col-md-10 pull-left user jumbotron jumbotron-fluid" style="margin-bottom:5%;margin-left:5%;background-color:#303030" >
+             <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
+             <a href="/movies/<%=obj.movie_id%>"><h3><%=obj.movie_title%></h3></a>
+            <h3><%=obj.review_body%></h3>
+           </div>
+          <% }); %>
       </div>
-      <% }); %>
-    </div>
+         
+     </div>
 
   </body>
+  
     <% include partials/footer.ejs %>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include partials/head.ejs %>
+  <body style="margin-top:7%;">
+    <% include partials/header.ejs %>
+     <div class="container container-fluid col-md-10 text-center">
+       
+       <table class="table text-white table-dark table-hover text-center" style="margin-left:0">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Title</th>
+            <th scope="col">Favorite</th>
+            </tr>
+        </thead>
+         <tbody>
+           <% user_diary[0].movies_watched_titles.forEach(obj=>{ %> 
+          <tr>
+            <td class="text-success"> <span class="fa-stack fa-3x"><i class="fa fa-calendar-o fa-stack-2x"></i><h6 class="fa-stack-1x calendar-text"><%=obj.timestamp%></span></span> </td>
+            <td class="align-middle"><a href="/users/<%=obj.name%>" class="text-white" style="text-decoration:none"><%=obj.movie_title%></a></td>
+            <td class="text-danger align-middle"> &nbsp;<%if(obj.favorite){%><i class="fa fa-heart fa-lg"></i><% }%></td>
+          </tr>
+            <% }); %>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
+    <% include partials/footer.ejs %>
+</html>

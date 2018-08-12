@@ -17,27 +17,27 @@
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
     "movies_watched":32,
-    "review_count":19,
+    "review_count":32,
     "password": "doe"
   },
   {
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
     "movies_watched":20,
-    "review_count":19,
+    "review_count":10,
     "password": "doe"
   },
   {
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
     "movies_watched":320,
-    "review_count":19,
+    "review_count":29,
     "password": "doe"
   },
   {
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
-    "movies_watched":32,
+    "movies_watched":62,
     "review_count":19,
     "password": "doe"
   },
@@ -45,14 +45,14 @@
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
     "movies_watched":30,
-    "review_count":19,
+    "review_count":1,
     "password": "doe"
   },
   {
     "name": "john",
     "id": "9841a17f-7a55-4bf8-bb90-a828cb8d14d1",
     "movies_watched":32,
-    "review_count":19,
+    "review_count":0,
     "password": "doe"
   }
 ]

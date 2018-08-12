@@ -84,21 +84,22 @@ hr {
   background-color:#303030;
 
 }
-#reviews a:hover{
+#reviews a:hover {
   text-decoration: none;
   background-color:grey;
 }
-#reviews img{
+
+#reviews img, .user img{
   margin-right:2%;
 }
-#reviews a h3:hover, .side a:hover, #mv_review a:hover{
+#reviews a h3:hover, .side a:hover, #mv_review a:hover, .user a:hover{
   color:white;
   font-size:1.7vw;
 }
-#popular img{
+#popular img {
   border: 3px solid white;
 }
-#popular img:hover{
+#popular img:hover {
   border: 6px solid white;
 }
 #reviews h3{
@@ -108,7 +109,7 @@ hr {
   position:relative;
 }
 
-#nowPlaying img:hover,#reviews img:hover {
+#nowPlaying img:hover,#reviews img:hover,.user img:hover {
   border: 3px solid white;
 }
 
@@ -129,4 +130,5 @@ hr {
 .table{
   margin-left:6%;
 }
- 
+
+.calendar-text { margin-top: .5em; }
