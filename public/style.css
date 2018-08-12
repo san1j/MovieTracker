@@ -12,11 +12,11 @@ body {
 * {
   font-family:Times;
 }
-
+ 
 .footer {
   background-color: #323232;
 	padding: 8px;
-	margin-top: 10px;
+	margin-top: 4%;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -91,7 +91,7 @@ hr {
 #reviews img{
   margin-right:2%;
 }
-#reviews a h3:hover, .side a:hover{
+#reviews a h3:hover, .side a:hover, #mv_review a:hover{
   color:white;
   font-size:1.7vw;
 }
@@ -129,3 +129,4 @@ hr {
 .table{
   margin-left:6%;
 }
+ 

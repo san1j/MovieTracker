@@ -8,9 +8,9 @@
           </div>
            <% reviews.forEach(obj=>{ %> 
            <div class="jumbotron jumbotron-fluid col-md-6">
-             <a href="#"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
-             <a href="#"><h3><%=obj.movie_title%></h3></a>
-             <a href="#"><h3><%=obj.user_name%></h3></a>
+             <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
+             <a href="/movies/<%=obj.movie_id%>"><h3><%=obj.movie_title%></h3></a>
+             <a href="/users/<%=obj.user_name%>"><h3>Review by <%=obj.user_name%></h3></a>
              <h3><%=obj.review_body%></h3>
            </div>
           <% }); %>

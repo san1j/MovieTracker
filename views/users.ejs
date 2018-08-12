@@ -22,7 +22,7 @@
          <tbody>
            <% users.forEach(obj=>{ %> 
           <tr>
-             <td><%=obj.name%></td>
+            <td><a href="/users/<%=obj.name%>" class="text-white" style="text-decoration:none"><%=obj.name%></a></td>
             <td class="text-success fa fa-eye"> &nbsp;<%=obj.movies_watched%></td>
             <td class="text-danger"><i class="fa fa-comment"></i><%=obj.review_count%></td>
           </tr>

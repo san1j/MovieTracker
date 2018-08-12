@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+    
+      <div class = "container container-fluid col-lg-10 mx-auto" style="margin:5%">
+       <% user_reviews.forEach(obj=>{ %> 
+
+        <div id="profile" style="margin-left:2%;margin-top:1%;" class="pull-left">
+          <h1 class="ml-auto h1 text-white"><%= obj.user_name %></h1>  
+          <h6 style="color:#dcdcdc"><%= obj.movies_watched %> movies watched</h6>  
+          <h6 style="color:#dcdcdc"><%= obj.review_count %> reviews</h6>  
+        </div> 
+      
+        <div class="col-md-8 pull-left" style="margin-left:2%; margin-top:3%;color:#dcdcdc">
+         <div class="col-md-12 pull-left" style=" color:#dcdcdc;">
+            Recently watched <a href="#" class="pull-right" style="margin-right:5%; color:#dcdcdc;">All</a>
+           <hr style ="border-color:#808080;padding-top:0">
+         </div>
+        
+        <div class="col-md-12 pull-left">
+           <% obj.recently_watched.forEach(path=>{ %> 
+             <img src = <%=path%> style="margin-right:.5%;margin-left:5%" >  
+             <% }); %>
+         </div>
+        
+        <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc">
+            Favorites <hr style ="border-color:#808080;">
+         </div>
+        <div class="col-md-12 pull-left">
+           <% obj.favorites.forEach(path=>{ %> 
+             <img src = <%=path%> style="margin-right:.5%;margin-left:5%" >  
+             <% }); %>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+  </body>
+    <% include partials/footer.ejs %>
+</html>

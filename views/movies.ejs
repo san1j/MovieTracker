@@ -15,7 +15,7 @@
       <div id="popular">
        <div class = "text-center">
           <% popular.forEach(obj=>{ %> 
-         <a href="#"><img src = <%= obj.poster %> ></a>
+         <a href="/movies/<%=obj.id%>"><img src = <%= obj.poster %> ></a>
            <% }); %>
       </div>
       </div>

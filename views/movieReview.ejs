@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+  <div class = "container container-fluid col-lg-10 mx-auto" style="margin:5%">
+    <% movieInfo.forEach(obj=>{ %> 
+    <div class="col-md-3 pull-left row" id="movieInfo" style="margin-top:3%;margin-left:6%">
+    <div class="sideposter"><img src = <%= obj.poster_path %> ></div>
+    <a href="/login" style="margin:6%;margin-left:0" class="btn btn-secondary"> Sign in to log this movie </a>
+    </div>
+    
+     <div class="col-md-4 pull-left">
+    <div class="text-white" style="margin-top:9%;"><h4><%=obj.title%></h4></div>  
+    <div class="text-white"><h5><%= obj.tagline %> </h5></div>
+    <div class="text-white h5"><h5>Released on <%= obj.release_date %> </h5></div>
+      <div style="color:#dcdcdc"><h5>  Overview:</br> <%= obj.overview %></h5></div>
+    </div>
+    
+    <div class="col-md-3 jumbotron pull-left text-white" style="margin-top:2%; margin-left:6%; background-color: #303030">
+    <div class="sidepanel text-center"><h5>Details</h5></div>
+    <div class="sidepanel text-center"><h6>Runtime: <%=obj.runtime%> min</h6></div>
+    <div class="sidepanel text-center"><h6>Rating: <%=obj.vote_average%></h6></div>
+    <div class="sidepanel text-center"><h6>Votes: <%=obj.vote_count%></h6></div>
+    <div class="sidepanel text-center"><h6>Studio: <%=obj.production_companies%> </h6></div>
+    <div class="sidepanel text-center"><h6>Country: <%=obj.production_countries%> </h6></div>
+      
+    </div>
+      <% }); %>
+    
+    <div class="row col-lg-10 mx-auto" id="mv_review"> <p class="h3 text-white col-md-10" style="margin-top:6%;padding:0">Recent reviews for this movie </p>
+         <% movie_reviews.forEach(obj=>{ %> 
+           <div style="margin:0;padding:2%;margin-bottom:3%; background-color:#303030" class= "jumbotron">
+             <h3 style="color:#dcdcdc">Review by <a href="/users/<%=obj.user_name%>" style="text-decoration:none;"><span style="color:#add8e6"><%=obj.user_name%></span></a></h3>
+             <h3 style="color:#dcdcdc;"><%=obj.review_body%></h3>
+    </div> 
+          <% }); %>
+    </div>
+       
+    </div>
+  </body>
+    <% include partials/footer.ejs %>
+</html>

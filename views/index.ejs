@@ -14,9 +14,9 @@
       
       <div id="nowPlaying">
        <div id ="movies" class = "text-center">
-          <% nowPlaying.forEach(obj=>{ %> 
-          <a href="#"><img src = <%= obj.poster %> > </a>
-           <% }); %>
+           <% nowPlaying.forEach(obj=>{ %> 
+            <a href="/movies/<%=obj.id%>"><img id="poster" src = <%= obj.poster %> > </a>
+            <% }); %>
       </div>
       </div>
       
