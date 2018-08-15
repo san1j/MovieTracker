@@ -25,10 +25,11 @@
          </div>
         
         <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc;">
-            Favorites <hr style ="border-color:#808080;">
+            All-time favorites <hr style ="border-color:#808080;">
          </div>
         <div class="col-md-12 pull-left">
-           <% user_reviews[0].favorites.forEach(path=>{ %> 
+           <% var favorite = user_reviews[0].favorites.slice(0,4);%>
+           <% favorite.forEach(path=>{ %> 
              <img src = <%=path%> style="margin-right:.5%;margin-left:5%; border:1px solid white" >  
              <% }); %>
         </div>

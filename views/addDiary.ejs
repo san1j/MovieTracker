@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+  
+  <div class="container col-xs-12 col-sm-8 col-md-8 mx-auto">
+		<form class="border-class" action= " " method="POST">
+			<div class="form-group">
+				<label for="username">Title</label> <input type="text"
+					value="" class="form-control" required="true">
+			</div>
+			<div class="form-group">
+				<label for="poem">Poem</label>
+				<textarea rows="5" th:field="*{body}" placeholder="Enter poem"
+					class="form-control" required="true"></textarea>
+			</div>
+			<input type="hidden" th:field="*{userModel}" /> <input type="hidden"
+				th:field="*{poemId}" />
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+   
+  </body>
+    <% include partials/footer.ejs %>
+</html>

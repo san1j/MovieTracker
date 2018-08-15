@@ -123,7 +123,7 @@ hr {
 
 .side hr{
    border-width: 1px;
-    border-color:grey;
+  border-color:grey;
 }
 
  
@@ -132,3 +132,5 @@ hr {
 }
 
 .calendar-text { margin-top: .5em; }
+
+ 

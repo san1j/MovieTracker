@@ -4,7 +4,7 @@ var signUp= express.Router();
 module.exports = signUp;
   
 signUp.get("/",(req,res)=>{
-    res.render("signUp");
+    res.render("signUp",{"req":req});
   });
 
 signUp.post("/",(req,res)=>{

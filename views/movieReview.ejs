@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <% include partials/head.ejs %>
+ 
   <body>
     <% include partials/header.ejs %>
   <div class = "container container-fluid col-lg-10 mx-auto" style="margin:5%">
     <% movieInfo.forEach(obj=>{ %> 
     <div class="col-md-3 pull-left row" id="movieInfo" style="margin-top:3%;margin-left:6%">
     <div class="sideposter"><img src = <%= obj.poster_path %> ></div>
+     <% if (!req.user) { %>
     <a href="/login" style="margin:6%;margin-left:0" class="btn btn-secondary"> Sign in to log this movie </a>
+     <% } %>
+       <% if (req.user) { %>
+        <div class="btn btn-info" style="margin-top:5%;margin-left:9%">
+          <a href="/users/<%=req.user[0].name%>/add/<%=obj.id%>" style="text-decoration:none;color:inherit">
+         <i class="fa fa-eye"></i></a>
+      </div>
+    
+      <form action="/users/<%=req.user[0].name%>/favorite/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
+       <button type="submit"  class="btn btn-danger text-white"  onclick="alert('This movie has been added to your favorites');" >
+         <span><i class="fa fa-heart"></i></span> </button>
+       <input type="hidden" name="poster_path" value="<%=obj.poster_path%>"></input>
+       </form>
+        <% } %>
     </div>
     
      <div class="col-md-4 pull-left">
@@ -39,5 +54,4 @@
     </div>
   </body>
     <% include partials/footer.ejs %>
-</html>als/footer.ejs %>
-</html><p class="h3 text-white col-md-10" style="margin-top:6%;padding:0">Recent reviews for this movie </p>
+</html> 

@@ -6,11 +6,20 @@
     <% include partials/header.ejs %>
     <div class="container-fluid">
       
+        <% if (req.user) { %>
+        <div id="welcome" class = "col-md-7 mx-auto text-center" style = "margin-top:7%;padding:3%;font-size:1.4em;color:#d3d3d3">
+          Welcome <%= req.user[0].name %>. Click on movies you've watched, then hit the <i class="fa fa-eye"></i>icon
+          to log the movie to your diary and the  <i class = "fa fa-heart"></i>icon if it's your all time favorite!
+        </div>
+      <% } %>
+      
+       <% if (!req.user) { %>
       <div id="heading">
         <h1 class="text-center">
           Track, organize and review your movies!
         </h1>
       </div>
+       <% } %>
       
       <div id="nowPlaying">
        <div id ="movies" class = "text-center">

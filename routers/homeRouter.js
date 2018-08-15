@@ -14,8 +14,8 @@ home.get('/', (req, res)=>{
           var nowPlaying = [];
           var fullURL = req.protocol + '://' + req.get('host') +req.url;
           results.forEach(element=>{nowPlaying.push({"vote_count":element.vote_count,"vote_average":element.vote_average,"id":element.id,"title":element.title,"poster":"https://image.tmdb.org/t/p/w185/"+element.poster_path});});
-          res.render("index",{nowPlaying: nowPlaying, reviews:reviews,"url":fullURL,"users":userdata});
-  })
+          res.render("index",{"nowPlaying": nowPlaying, "reviews":reviews,"url":fullURL,"users":userdata,"req":req});
+    })
    .catch(error => {
       res.sendStatus(404); return;
   });
