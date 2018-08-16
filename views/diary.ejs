@@ -17,7 +17,7 @@
            <% user_diary[0].movies_watched_titles.forEach(obj=>{ %> 
           <tr>
             <td class="text-success"> <span class="fa-stack fa-3x"><i class="fa fa-calendar-o fa-stack-2x"></i><h6 class="fa-stack-1x calendar-text text-white"><%=obj.timestamp%></span></span> </td>
-            <td class="align-middle"><a href="/users/<%=obj.name%>" class="text-white" style="text-decoration:none"><%=obj.movie_title%></a></td>
+            <td class="align-middle h3"><a href="/movies/<%=obj.movie_id%>" class="text-white" style="text-decoration:none"><%=obj.movie_title%></a></td>
             <td class="text-danger align-middle"> &nbsp;<%if(obj.favorite){%><i class="fa fa-heart fa-lg"></i><% }%></td>
           </tr>
             <% }); %>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body>
+    <% include partials/header.ejs %>
+        
+     <div class="container col-xs-12 col-sm-8 col-md-8 pull-left text-white" style="margin-top:8%;margin-bottom:3%; ">
+          <% user_reviews.forEach(obj=>{ %> 
+
+       <div class="row">
+           <div class="jumbotron jumbotron-fluid col-md-12 user" style="background-color:#303030;margin-bottom:3%;">
+             <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
+             <a href="/movies/<%=obj.movie_id%>"><h3><%=obj.movie_title%></h3></a>
+             <h3><%=obj.review_body%></h3>
+           </div>
+       </div>
+         <% }); %>
+       
+    </div>
+   
+  </body>
+    <% include partials/footer.ejs %>
+</html>

@@ -26,6 +26,13 @@ users.get('/:user/all',(req, res)=>{
    res.render("diary",{"user_diary":user_diary,"favorites":"dont foget to avoid dup" ,"recently_viewed":"dont fr" ,"req":req});
  });
 
+users.get('/:user/reviews/all',(req, res)=>{
+  //sort by date desc
+  var user_review = reviews.filter(rev=>rev.user_name === req.params.user);
+  reviews[0].review_count++;  
+  res.render("addReview",{"req":req,"user_reviews":user_review});
+  });
+
 users.post('/:user/diary',urlencodedParser,(req, res)=>{
  reviews[0].movies_watched_titles.unshift({"movie_title":req.body.title,"timestamp":req.body.date,"favorite":req.body.favorite});
   //movie_watched count++//add to recently watched no duplciates in db for movie Id //add bcrypt
@@ -38,9 +45,9 @@ var poster_path = req.body.poster_path.replace("185","92");
  res.render("addDiary",{"req":req,"poster_path":poster_path,"title":req.body.title})
 });
 
-users.post('/:user/review/:id',urlencodedParser,(req, res)=>{
+users.post('/:user/review/',urlencodedParser,(req, res)=>{
 var poster_path = req.body.poster_path.replace("185","92");
-  //make sure to also get he user_id"
+  //make sure to also get he user_id" // use a set to prevent duplicates
 var currentDate = new Date()
 var fullDate =currentDate.getMonth() + 1+"/"+currentDate.getDate()+"/"+currentDate.getFullYear();
   reviews.push({"user_name":req.params.user,
@@ -48,7 +55,7 @@ var fullDate =currentDate.getMonth() + 1+"/"+currentDate.getDate()+"/"+currentDa
     "movie_poster" : poster_path,
     "movie_title": req.body.title,
     "review_body":req.body.review});
- res.send(reviews)
+ res.redirect("/users/"+req.params.user+"/reviews/all");
 });
 
 users.post('/:user/favorite/:id',urlencodedParser,(req, res)=>{

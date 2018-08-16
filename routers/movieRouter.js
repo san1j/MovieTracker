@@ -1,3 +1,4 @@
+
 var express = require('express');
 var rp = require('request-promise');
 var reviews = require('../data/reviews.json');
@@ -14,8 +15,9 @@ movies.get("/",(req,res)=>{
     .then(body => {
           var results = JSON.parse(body).results.slice(0,8);
           var popular = [];
+          var review_copy = reviews.slice(0,5);
           results.forEach(element=>{popular.push({"vote_count":element.vote_count,"vote_average":element.vote_average,"id":element.id,"title":element.title,"poster":"https://image.tmdb.org/t/p/w300/"+element.poster_path});});
-          res.render("movies",{popular: popular, reviews:reviews,"users":users,"req":req});
+          res.render("movies",{popular: popular, reviews:review_copy,"users":users,"req":req});
   })
    .catch(error => {
       res.sendStatus(404); return;

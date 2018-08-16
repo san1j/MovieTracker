@@ -46,7 +46,7 @@
 
        <% if(req.user) { %>
         <div class=" col-md-8 pull-left text-white" style="margin-top:3%;margin-left:8%">
-              <form action="/users/<%=req.user[0].name%>/review/<%=obj.id%>" method = "post">
+              <form action="/users/<%=req.user[0].name%>/review/" method = "post">
                 <div class="text-white">
                   Review this movie <hr>
                 </div>
@@ -58,18 +58,24 @@
                 </form>
         </div>
           <% } %>
-      <% }); %>
-    
-     
-    <div class="row col-lg-10 mx-auto" id="mv_review"> <p class="h3 text-white col-md-10" style="margin-top:6%;padding:0">Recent reviews for this movie </p>
+
+     <div class="h3 row text-white col-md-10 pull-left" style="margin-left:9%;margin-top:4%" >
+        <p >Recent reviews for this movie </p>
+      </div>
+
          <% movie_reviews.forEach(obj=>{ %> 
+        <div class="row col-lg-10 mx-auto" id="mv_review"> 
            <div style="margin:0;padding:2%;margin-bottom:3%; background-color:#303030" class= "jumbotron">
              <h3 style="color:#dcdcdc">Review by <a href="/users/<%=obj.user_name%>" style="text-decoration:none;"><span style="color:#add8e6"><%=obj.user_name%></span></a></h3>
              <h3 style="color:#dcdcdc;"><%=obj.review_body%></h3>
           </div> 
-          <% }); %>
     </div>
-       
+         <% }); %>
+      <% }); %>
+    
+     
+   
+
     </div>
   </body>
     <% include partials/footer.ejs %>

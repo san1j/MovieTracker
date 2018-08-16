@@ -34,22 +34,26 @@
              <% }); %>
         </div>
           
+         
           <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc">
-            Recently reviewed <hr style ="border-color:#808080;">
+             Recently reviewed <hr style ="border-color:#808080;">
          </div>
+         
+      </div>
+           
+     </div>
         
-          <% user_reviews.forEach(obj=>{ %> 
-           <div class="col-md-10 pull-left user jumbotron jumbotron-fluid" style="margin-bottom:5%;margin-left:5%;background-color:#303030" >
+    <% user_reviews.forEach(obj=>{ %> 
+       <div class="col-md-5 pull-left user jumbotron jumbotron-fluid" style="margin-bottom:2%;margin-left:27%;background-color:#303030" >
              <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
              <a href="/movies/<%=obj.movie_id%>"><h3><%=obj.movie_title%></h3></a>
             <h3><%=obj.review_body%></h3>
            </div>
           <% }); %>
-      </div>
-         
-     </div>
-
   </body>
   
     <% include partials/footer.ejs %>
 </html>
+
+
+
