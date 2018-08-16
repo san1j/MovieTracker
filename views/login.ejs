@@ -5,9 +5,22 @@
     <% include partials/header.ejs %>
     <div class="container col-xs-12 col-sm-8 col-md-6 mx-auto border-class" id="login">
 		
+      <% if(success !== "" ) { %>
+          <div class="alert alert-info">
+            <%=success %>
+      </div>
+      <%} %>
+      
+       <% if(error == true) { %>
+      <div class="form-group">
+        <div class= "alert alert-danger" style="margin-bottom:0">
+         Invalid username or password.
+      </div>
+        <%} %>
+      
 		<form action="/login" method="POST">
- 
-			<div class="form-group">
+       
+ 			<div class="form-group">
 				<label for="username">Username</label> <input type="text"
 					name="username" id="username" placeholder="Username"
 					class="form-control" required="true">

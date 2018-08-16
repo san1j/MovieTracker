@@ -133,4 +133,12 @@ hr {
 
 .calendar-text { margin-top: .5em; }
 
- 
+ .border-class {
+	border: thin #D3D3D3 solid;
+	margin: 20px;
+	padding: 4%;
+}
+
+#t:focus { 
+     background:white;
+}

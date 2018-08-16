@@ -4,21 +4,35 @@
   <body>
     <% include partials/header.ejs %>
   
-  <div class="container col-xs-12 col-sm-8 col-md-8 mx-auto">
-		<form class="border-class" action= " " method="POST">
-			<div class="form-group">
+  <div class="container col-xs-12 col-sm-8 col-md-8 mx-auto text-white border-class" style="margin-top:8%">
+    <div class="row">
+      
+      <div class="col-md-2 pull-left">
+        <img src= <%=poster_path%> >
+      </div>
+      
+   <div class="col-md-10 pull-right">
+ 		<form action= "/users/<%=req.user[0].name%>/diary" method="POST">
+ 			<div class="form-group">
 				<label for="username">Title</label> <input type="text"
-					value="" class="form-control" required="true">
+					name = "title" value="<%=title%>" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="poem">Poem</label>
-				<textarea rows="5" th:field="*{body}" placeholder="Enter poem"
+				<label for="poem">When did you watch it?</label>
+				<textarea rows="1"  name="date" placeholder="mm/dd/yyyy"
 					class="form-control" required="true"></textarea>
 			</div>
-			<input type="hidden" th:field="*{userModel}" /> <input type="hidden"
-				th:field="*{poemId}" />
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+      <div class="form-group form-check">
+				 <input class="form-check-input" type="checkbox" name = "favorite" value="true">
+          <label class="form-check-label">Favorite?</label>
+ 		  </div>
+			  <input type="hidden"/> 
+        <input type="hidden"/>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+		  </form>
+      </div>
+     
+      </div>
 	</div>
 
    

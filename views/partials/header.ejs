@@ -4,8 +4,9 @@
 				<a	class="nav-item nav-link text-white ml-auto" href="/users">Users</a>
         <a class="nav-item nav-link text-white" href="/movies">Movies</a>
         <% if (req.user) { %>
-      	<a	class="nav-item nav-link text-white" href="#">My Diary</a>
-        <a	class="nav-item nav-link text-white" href="#">My Reviews</a>
+      	<a	class="nav-item nav-link text-white" href="/users/<%=req.user[0].name%>/all">My Diary</a>
+        <a	class="nav-item nav-link text-white" href="/users/<%=req.user[0].name%>">My Page</a>
+         <a	class="nav-item nav-link text-white" href="#">My Reviews</a>
         <a	class="nav-item nav-link text-white" href="/logout">Logout</a>
            <% } %>
         <% if (!req.user) { %>

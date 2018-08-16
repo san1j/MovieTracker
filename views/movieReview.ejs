@@ -12,10 +12,13 @@
     <a href="/login" style="margin:6%;margin-left:0" class="btn btn-secondary"> Sign in to log this movie </a>
      <% } %>
        <% if (req.user) { %>
-        <div class="btn btn-info" style="margin-top:5%;margin-left:9%">
-          <a href="/users/<%=req.user[0].name%>/add/<%=obj.id%>" style="text-decoration:none;color:inherit">
-         <i class="fa fa-eye"></i></a>
-      </div>
+        <form action="/users/<%=req.user[0].name%>/add/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
+           <button type="submit"  class="btn btn-info" >
+             <i class="fa fa-eye"></i> 
+            </button>
+         <input type="hidden" name="poster_path" value="<%=obj.poster_path%>"></input>
+         <input type="hidden" name="title" value="<%=obj.title%>"></input>
+        </form>
     
       <form action="/users/<%=req.user[0].name%>/favorite/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
        <button type="submit"  class="btn btn-danger text-white"  onclick="alert('This movie has been added to your favorites');" >
@@ -40,8 +43,24 @@
     <div class="sidepanel text-center"><h6>Studio: <%=obj.production_companies%> </h6></div>
     <div class="sidepanel text-center"><h6>Country: <%=obj.production_countries%> </h6></div>
      </div>
+
+       <% if(req.user) { %>
+        <div class=" col-md-8 pull-left text-white" style="margin-top:3%;margin-left:8%">
+              <form action="/users/<%=req.user[0].name%>/review/<%=obj.id%>" method = "post">
+                <div class="text-white">
+                  Review this movie <hr>
+                </div>
+                <textarea class="form-control" rows="5"  name="review" style="background-color:#d3d3d3;border:none;input:focus{background-color:yellow}"></textarea>
+                <input type="hidden" name="movie_id" value="<%=obj.id%>" >
+                <input type="hidden" name="poster_path" value="<%=obj.poster_path%>" >
+                <input type="hidden" name="title" value="<%=obj.title%>" >
+                <button type="submit" class="btn btn-info" style="margin:2%;margin-left:0"><i class="fa fa-paper-plane"></i>Post</button>
+                </form>
+        </div>
+          <% } %>
       <% }); %>
     
+     
     <div class="row col-lg-10 mx-auto" id="mv_review"> <p class="h3 text-white col-md-10" style="margin-top:6%;padding:0">Recent reviews for this movie </p>
          <% movie_reviews.forEach(obj=>{ %> 
            <div style="margin:0;padding:2%;margin-bottom:3%; background-color:#303030" class= "jumbotron">
