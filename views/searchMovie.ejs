@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+      <% include partials/head.ejs %>
+  <body style="margin-top:2%;">
+    <% include partials/header.ejs %>
+    
+    <div class="container-fluid col-md-7" style="margin-top:7%;margin-left:10%;color:#d3d3d3">
+      
+     <div id="heading" >
+        <h3 class="ml-auto">
+          Displaying top search results for '<%= search_term %>'
+        </h3>  <hr style="margin-right:7%">
+     </div>
+    
+       </div>
+    
+    <% search_results.forEach(obj=>{ %> 
+        <div class="jumbotron jumbotron-fluid col-md-12" id="reviews" style="margin-bottom:2%">
+             <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.poster_path %>  style="margin-top:2%;"></a>
+             <a href="/movies/<%=obj.movie_id%>"><h3 style="color:white; font-size:2em"><%=obj.title%></h2></a>
+             <h3>Original title: <%=obj.original_title%></h3>
+             <h3>Released: <%=obj.release_date%></h3>
+        </div>
+     <% }); %>
+    
+   
+  </body>
+    <% include partials/footer.ejs %>
+</html>

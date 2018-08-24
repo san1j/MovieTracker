@@ -4,18 +4,27 @@
   <body>
     <% include partials/header.ejs %>
     
-    <div class="container-fluid">
-      <div id="heading">
-        <h1 class="ml-auto">
-          Popular movies this week 
-        </h1> <hr>
+    <form class="pull-right col-xs-3" action="/movies/search" method="post" style="margin-right:2%">
+      <div class="input-group" style="height:5vh;">
+        <input type="text" class="form-control input-sm" placeholder="Search for movies" name="title">
+          <button class="btn btn-primary" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
       </div>
-      
-      
+   </form>
+    
+      <div class="container-fluid">
+        <div id="heading">
+          <h1 class="ml-auto">
+            Popular movies this week 
+          </h1> <hr>
+        </div>
+     </div>
+       
       <div id="popular">
        <div class = "text-center">
           <% popular.forEach(obj=>{ %> 
-         <a href="/movies/<%=obj.id%>"><img src = <%= obj.poster %> ></a>
+           <a href="/movies/<%=obj.id%>"><img src = <%= obj.poster %> ></a>
            <% }); %>
       </div>
       </div>

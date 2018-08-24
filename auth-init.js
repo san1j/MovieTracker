@@ -1,18 +1,22 @@
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
-var users= require('./data/users.json')
+//var users = require('./data/users.json')
+var db = require('./data/db.js');
+var bcrypt = require('bcrypt');
 
- 
+async function getUser (username) {
+  let dbObj = db.getdb;
+  return await dbObj.collection("users").findOne({"username":username});
+ }
 
-passport.use(new LocalStrategy(
-  {passReqToCallback: true},
-  function(req,username, password, done) {
-     var user  = users.filter(obj=> obj.name == username);
-        if (!user || user.length==0||user[0].password !== password) {
-         return done(null, false);
-      }
-      return done(null, user);
-   }
+passport.use(new LocalStrategy({passReqToCallback: true},
+  async function(req,username, password, done) {
+     var user  = await getUser(username); 
+     bcrypt.compare(password, user.password).then(result=>{
+       console.log(result)
+        if (result == true) return done(null, user);
+        else return done(null, false)})
+     }
 ));
 
 passport.serializeUser(function(user, done) {

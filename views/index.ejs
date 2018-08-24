@@ -8,7 +8,7 @@
       
         <% if (req.user) { %>
         <div id="welcome" class = "col-md-7 mx-auto text-center" style = "margin-top:7%;padding:3%;font-size:1.4em;color:#d3d3d3">
-          Welcome <%= req.user[0].name %>. Click on movies you've watched, then hit the <i class="text-info fa fa-eye"></i>icon
+          Welcome <%= req.user.username %>. Click on movies you've watched, then hit the <i class="text-info fa fa-eye"></i>icon
           to log the movie to your diary and the  <i class = "text-danger fa fa-heart"></i>icon if it's your all time favorite!
         </div>
       <% } %>

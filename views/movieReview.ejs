@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <% include partials/head.ejs %>
- 
+  
   <body>
     <% include partials/header.ejs %>
+    
+    <div class="myAlert-top alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> Indicates a successful or positive action.
+    </div>
+
+    
   <div class = "container container-fluid col-lg-10 mx-auto" style="margin:5%">
     <% movieInfo.forEach(obj=>{ %> 
     <div class="col-md-3 pull-left row" id="movieInfo" style="margin-top:3%;margin-left:6%">
@@ -12,7 +19,7 @@
     <a href="/login" style="margin:6%;margin-left:0" class="btn btn-secondary"> Sign in to log this movie </a>
      <% } %>
        <% if (req.user) { %>
-        <form action="/users/<%=req.user[0].name%>/add/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
+        <form action="/users/<%=req.user.username%>/add/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
            <button type="submit"  class="btn btn-info" >
              <i class="fa fa-eye"></i> 
             </button>
@@ -20,8 +27,8 @@
          <input type="hidden" name="title" value="<%=obj.title%>"></input>
         </form>
     
-      <form action="/users/<%=req.user[0].name%>/favorite/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
-       <button type="submit"  class="btn btn-danger text-white"  onclick="alert('This movie has been added to your favorites');" >
+      <form action="/users/<%=req.user.username%>/favorite/<%=obj.id%>" method = "POST" style="margin-left:9%;margin-top:5%">
+       <button type="submit"  class="btn btn-danger text-white"  onclick="alert('This movie has been added to your favorites')" >
          <span><i class="fa fa-heart"></i></span> </button>
        <input type="hidden" name="poster_path" value="<%=obj.poster_path%>"></input>
        </form>
@@ -46,7 +53,7 @@
 
        <% if(req.user) { %>
         <div class=" col-md-8 pull-left text-white" style="margin-top:3%;margin-left:8%">
-              <form action="/users/<%=req.user[0].name%>/review/" method = "post">
+              <form action="/users/<%=req.user.username%>/review/" method = "post">
                 <div class="text-white">
                   Review this movie <hr>
                 </div>

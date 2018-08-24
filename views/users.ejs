@@ -22,9 +22,9 @@
          <tbody>
            <% users.forEach(obj=>{ %> 
           <tr>
-            <td><a href="/users/<%=obj.name%>" class="text-white" style="text-decoration:none"><%=obj.name%></a></td>
-            <td class="text-success fa fa-eye"> &nbsp;<%=obj.movies_watched%></td>
-            <td class="text-danger"><i class="fa fa-comment"></i><%=obj.review_count%></td>
+            <td><a href="/users/<%=obj.username%>" class="text-white" style="text-decoration:none;"><%=obj.username%></a></td>
+            <td class="text-success fa fa-eye"> <a href="/users/<%=obj.username%>" style="text-decoration:none;">&nbsp;<%=obj.movies_watched%></a></td>
+            <td class="text-danger"><a href="/users/<%=obj.username%>"class="text-danger" style="text-decoration:none;"><i class="fa fa-comment"></i><%=obj.review_count%></a></td>
           </tr>
             <% }); %>
         </tbody>

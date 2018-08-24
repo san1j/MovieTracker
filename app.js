@@ -9,6 +9,7 @@ var rp = require('request-promise');
 var passport = require('passport')
 var bodyParser = require('body-parser');
 var validator = require('express-validator');
+var db = require('./data/db.js')
 
 var LocalStrategy = require('passport-local').Strategy;
 var app = express();

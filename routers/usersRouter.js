@@ -1,66 +1,65 @@
 var express = require('express');
-var reviews = require('../data/reviews.json')
-var userdata = require('../data/users.json')
 var rp = require('request-promise');
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var db = require('../data/db.js')
+var queries = require('../data/db-queries.js')
 
-
+ 
 var users= express.Router();
 module.exports = users;
 
-users.get("/",(req,res)=>{
-    res.render("users",{"reviews":reviews,"users":userdata,"req":req});
+users.get("/", queries.asyncMiddleware,(req,res)=>{
+    res.render("users",{"reviews":res.locals.reviews,"users":res.locals.users,"req":req});
   });
 
-users.get('/:user',(req, res)=>{
-  var user_reviews = reviews.filter(user => user.user_name == req.params.user);
-  user_reviews = user_reviews.splice(0,4);
-  res.render("userPage",{"user_reviews":user_reviews,"req":req});
+users.get('/:user',async (req, res)=>{
+  var user_reviews = await queries.userReviews(req.params.user).catch(error=>{res.sendStatus(404); return;});
+  res.render("userPage",{"user_reviews":user_reviews[0],"users":user_reviews[1],"req":req});
  });
 
-users.get('/:user/all',(req, res)=>{
-  var user_diary =  reviews.filter(user => user.user_name == req.params.user);
-  user_diary = user_diary.splice(0,1);
-  //or use a set
-   res.render("diary",{"user_diary":user_diary,"favorites":"dont foget to avoid dup" ,"recently_viewed":"dont fr" ,"req":req});
+users.get('/:user/all',async (req, res)=>{
+  var user_diary = await queries.userDiary(req.params.user).catch(error=>{res.sendStatus(404); return;});
+  res.render("diary",{"user_diary":user_diary ,"req":req});
  });
 
-users.get('/:user/reviews/all',(req, res)=>{
-  //sort by date desc
-  var user_review = reviews.filter(rev=>rev.user_name === req.params.user);
-  reviews[0].review_count++;  
-  res.render("addReview",{"req":req,"user_reviews":user_review});
+users.get('/:user/reviews/all',async (req, res)=>{
+   var user_review =  await queries.userReviewsAll(req.params.user).catch(error=>{res.sendStatus(404); return;})
+   res.render("addReview",{"req":req,"user_reviews":user_review});
   });
 
-users.post('/:user/diary',urlencodedParser,(req, res)=>{
- reviews[0].movies_watched_titles.unshift({"movie_title":req.body.title,"timestamp":req.body.date,"favorite":req.body.favorite});
-  //movie_watched count++//add to recently watched no duplciates in db for movie Id //add bcrypt
- reviews[0].movies_watched++;
- res.redirect("/users/"+req.params.user+"/all")
+users.post('/:user/diary',urlencodedParser,async (req, res)=>{
+  if(req.body.favorite == null) req.body.favorite = "false";
+  var movies_watched = await queries.moviesWatched(req.params.user,req.body.title,req.body.date,req.body.favorite,req.body.poster_path).catch(error=>{res.sendStatus(404); return;});
+  res.redirect("/users/"+req.params.user+"/all")
+});
+
+users.post('/:user/delete',urlencodedParser,async (req, res)=>{
+  var deleteDiaryEntry = await queries.deleteDiary(req.params.user,req.body.title,req.body.timestamp,req.body.favorite).catch(error=>{res.sendStatus(404); return;})
+  res.redirect("/users/"+req.params.user+"/all")
+});
+
+users.post('/:user/reviews/delete',urlencodedParser,async (req, res)=>{
+  var deleteReviewEntry = await queries.deleteReview(req.params.user,req.body.movie_id,req.body.movie_title,req.body.review_body).catch(error=>{res.sendStatus(404); return;})
+  res.redirect("/users/"+req.params.user+"/reviews/all")
 });
 
 users.post('/:user/add/:id',urlencodedParser,(req, res)=>{
-var poster_path = req.body.poster_path.replace("185","92");
- res.render("addDiary",{"req":req,"poster_path":poster_path,"title":req.body.title})
+  var poster_path = req.body.poster_path.replace("185","92");
+  res.render("addDiary",{"req":req,"poster_path":poster_path,"title":req.body.title})
 });
 
-users.post('/:user/review/',urlencodedParser,(req, res)=>{
-var poster_path = req.body.poster_path.replace("185","92");
-  //make sure to also get he user_id" // use a set to prevent duplicates
-var currentDate = new Date()
-var fullDate =currentDate.getMonth() + 1+"/"+currentDate.getDate()+"/"+currentDate.getFullYear();
-  reviews.push({"user_name":req.params.user,
-    "movie_id":req.body.movie_id,
-    "movie_poster" : poster_path,
-    "movie_title": req.body.title,
-    "review_body":req.body.review});
- res.redirect("/users/"+req.params.user+"/reviews/all");
+users.post('/:user/review/',urlencodedParser,async (req, res)=>{
+  var poster_path = req.body.poster_path.replace("185","92");
+  var currentDate = new Date();
+  var fullDate = currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate();
+  var addUserReview = await queries.addReview(req.params.user,req.body.movie_id,poster_path,req.body.title,req.body.review,fullDate).catch(error=>{res.sendStatus(404); return;})
+  res.redirect("/users/"+req.params.user+"/reviews/all");
 });
 
-users.post('/:user/favorite/:id',urlencodedParser,(req, res)=>{
-  var user =  reviews.filter(user => user.user_name == req.params.user);
+users.post('/:user/favorite/:id',urlencodedParser,async (req, res)=>{
   var poster_path = req.body.poster_path.replace("185","92")
-  if(user.length !== 0 ) user[0].favorites.unshift(poster_path); user[0].favorites.pop();
+  var userFavorite = queries.addFavorite(req.params.user,poster_path);
   res.redirect("/movies/"+req.params.id)
  });
+ 

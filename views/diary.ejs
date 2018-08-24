@@ -11,14 +11,26 @@
             <th scope="col">Date Watched</th>
             <th scope="col">Title</th>
             <th scope="col">Favorite</th>
+            <% if (req.user) { %>
+            <th scope="col">Delete</th>
+            <% } %>
             </tr>
         </thead>
          <tbody>
-           <% user_diary[0].movies_watched_titles.forEach(obj=>{ %> 
+           <% var titles = user_diary.movies_watched_titles.reverse() %>
+           <% titles.forEach(obj=>{ %> 
           <tr>
             <td class="text-success"> <span class="fa-stack fa-3x"><i class="fa fa-calendar-o fa-stack-2x"></i><h6 class="fa-stack-1x calendar-text text-white"><%=obj.timestamp%></span></span> </td>
             <td class="align-middle h3"><a href="/movies/<%=obj.movie_id%>" class="text-white" style="text-decoration:none"><%=obj.movie_title%></a></td>
-            <td class="text-danger align-middle"> &nbsp;<%if(obj.favorite){%><i class="fa fa-heart fa-lg"></i><% }%></td>
+            <td class="text-danger align-middle"> &nbsp;<%if(obj.favorite=="true"){%><i class="fa fa-heart fa-lg"></i><% }%></td>
+            <% if (req.user) { %>
+            <form action = "/users/<%=req.user.username%>/delete" method = "post">
+             <td class="text-white align-middle"><button type="submit" class="btn btn-danger" ><i class="text-white fa fa-trash fa-lg"></i></button></td>
+            <input type="hidden" name="timestamp" value = "<%=obj.timestamp%>" />
+            <input type="hidden" name="favorite" value = "<%=obj.favorite%>" />
+            <input type="hidden" name="title" value = "<%=obj.movie_title%>" />
+               </form>
+            <% } %>
           </tr>
             <% }); %>
         </tbody>

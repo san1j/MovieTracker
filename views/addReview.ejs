@@ -11,6 +11,14 @@
            <div class="jumbotron jumbotron-fluid col-md-12 user" style="background-color:#303030;margin-bottom:3%;">
              <a href="/movies/<%=obj.movie_id%>"><img class="pull-left" src = <%= obj.movie_poster %> ></a>
              <a href="/movies/<%=obj.movie_id%>"><h3><%=obj.movie_title%></h3></a>
+             <% if(req.user) { %>
+                <form action = "/users/<%=req.user.username%>/reviews/delete" method = "post">
+                 <div class="text-white pull-right"><button type="submit" class="btn btn-danger"><i class="text-white fa fa-trash fa-lg"></i></button></div>
+                <input type="hidden" name="movie_id" value = "<%=obj.movie_id%>" />
+                <input type="hidden" name="review_body" value = "<%=obj.review_body%>" />
+                <input type="hidden" name="movie_title" value = "<%=obj.movie_title%>" />
+               </form>
+             <% } %>
              <h3><%=obj.review_body%></h3>
            </div>
        </div>

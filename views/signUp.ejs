@@ -7,10 +7,11 @@
      <div class="container col-xs-12 col-sm-8 col-md-6 mx-auto" id = "signUp">
          <% if(errors.length !== 0) { %>
           <%  errors.forEach(error=>{ %> 
-              <% if(error.param== 'username') { %>
-                   <div class="alert alert-danger" style="margin-top:1%"><%=error.msg%></div>  
-              <% } %>
-                <% if(error.param== 'password') { %>
+              <% if(error.param == 'username') { %>
+                   <div class="alert alert-danger" style="margin-top:1%"> <%=error.msg%></div>  
+        
+               <% } %>
+                <% if(error.param == 'password') { %>
                    <div class="alert alert-danger" style="margin-top:1%"><%=error.msg%></div>  
                <% } %>
       <% }) %>
