@@ -4,6 +4,7 @@ var movies = require('./routers/movieRouter');
 var login = require('./routers/loginRouter');
 var signUp = require('./routers/signUpRouter');
 var home = require('./routers/homeRouter');
+var api = require('./routers/apiRouter');
 var users = require('./routers/usersRouter');
 var rp = require('request-promise');
 var passport = require('passport')
@@ -28,6 +29,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/api",api)
 app.use("/",home);
 app.use("/movies",movies);
 
@@ -44,9 +46,13 @@ app.use("/users",users);
 app.use(login);
  
 app.use("/signUp",signUp);
- 
+
+module.exports = app;
+
+if(!module.parent){ 
 
 var listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
+}

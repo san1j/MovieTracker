@@ -4,6 +4,7 @@
       <% include partials/head.ejs %>
   <body>
     <% include partials/header.ejs %>
+    <div id="index"> </div>
     <div class="container-fluid">
       
         <% if (req.user) { %>
@@ -21,7 +22,7 @@
       </div>
        <% } %>
       
-      <div id="nowPlaying" style="margin-right:5%" >
+      <div id="nowPlaying" style="margin-right:5%" class="col-xs-6 col-sm-12 col-md-12">
        <div id ="movies" class = "text-center">
            <% nowPlaying.forEach(obj=>{ %> 
             <a href="/movies/<%=obj.id%>"><img id="poster" src = <%= obj.poster %> > </a>

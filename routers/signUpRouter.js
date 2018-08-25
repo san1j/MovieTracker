@@ -28,7 +28,7 @@ signUp.post("/",urlencodedParser,check('username').custom(async function (value,
        const saltRounds = 10; 
        bcrypt.hash(req.body.password, saltRounds).then(async hash=>{
        var add = await queries.addUser(req.body.username,hash,req.body.email)})
-       res.redirect("login/success");
+       return res.redirect("login/success");
      }
       else return res.render("signUp",{"req":req,"errors":errors});
        

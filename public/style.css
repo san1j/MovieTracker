@@ -139,6 +139,17 @@ hr {
 	padding: 4%;
 }
 
+
+
+.menu-1 {
+float: left;
+margin-left: 10px;
+}
+ 
+
+@media only screen and (max-width : 640px) {
+ 
+}
  
 
  
