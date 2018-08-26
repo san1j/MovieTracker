@@ -2,10 +2,8 @@ var db = require('./db.js')
 
 module.exports.asyncMiddleware= async function asyncMiddleware (req,res,next)  {
   let dbObj = db.getdb;
-  let users = await dbObj.collection("users").find({}).sort( {review_count: -1 } ).limit(10).toArray().catch(error=>{res.sendStatus(404); return;});
-  let reviews = await dbObj.collection("reviews").find({}).sort( {_id: -1 } ).limit(5).toArray().catch(error=>{res.sendStatus(404); return;});
-  res.locals.users = users;
-  res.locals.reviews = reviews;
+  res.locals.users = await dbObj.collection("users").find({}).sort( {review_count: -1 } ).limit(10).toArray().catch(error=>{res.sendStatus(404); return;});
+  res.locals.reviews= await dbObj.collection("reviews").find({}).sort( {_id: -1 } ).limit(5).toArray().catch(error=>{res.sendStatus(404); return;});
   next();
 }
 
