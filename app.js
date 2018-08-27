@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 var express = require('express');
 var movies = require('./routers/movieRouter');
 var login = require('./routers/loginRouter');
