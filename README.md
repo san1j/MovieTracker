@@ -14,7 +14,7 @@ Username: username\
 Password: password
 
 ## Config
-Movie data is from [TMDb](https://www.themoviedb.org). Obtain an API key from TMDb by following the instructions [here](https://developers.themoviedb.org/3/getting-started/introduction).\
+Movie data is from [TMDb](https://www.themoviedb.org). Obtain an API key from TMDb by following the instructions [here](https://developers.themoviedb.org/3/getting-started/introduction).
 
 Add your API key and your MongoDB URI (or mLab URI) to the .env file
 
