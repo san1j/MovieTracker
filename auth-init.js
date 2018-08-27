@@ -11,7 +11,7 @@ async function getUser (username) {
 
 passport.use(new LocalStrategy({passReqToCallback: true},
   async function(req,username, password, done) {
-     var user  = await getUser(username); 
+     var user  = await getUser(username);        
      bcrypt.compare(password, user.password).then(result=>{
         if (result == true) return done(null, user);
         else return done(null, false)})

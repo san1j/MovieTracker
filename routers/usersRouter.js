@@ -59,7 +59,11 @@ users.post('/:user/review/',urlencodedParser,async (req, res)=>{
 
 users.post('/:user/favorite/:id',urlencodedParser,async (req, res)=>{
   var poster_path = req.body.poster_path.replace("185","92")
-  var userFavorite = queries.addFavorite(req.params.user,poster_path);
+  var userFavorite = await queries.addFavorite(req.params.user,poster_path);
+  let recommendations = await rp("https://api.themoviedb.org/3/movie/"+req.params.id+"/similar?api_key="+process.env.API_KEY+"&page=1").catch(error=>{res.sendStatus(404); return;})
+  let movie_rec = JSON.parse(recommendations).results.slice(0,1);
+  let movie = {"movie_id":movie_rec[0].id,"poster_path":"https://image.tmdb.org/t/p/w92/"+movie_rec[0].poster_path}
+  var userRecommendation = await queries.addRecommendations(req.params.user,movie);
   res.redirect("/movies/"+req.params.id)
  });
  

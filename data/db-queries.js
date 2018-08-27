@@ -58,6 +58,11 @@ module.exports.userReviews  = async function userReviews(username,res) {
   return await dbObj.collection("users").findOneAndUpdate({"username":username },{$push: {"favorites": { $each:[poster],$slice: -4}} }).catch(error=>{res.sendStatus(404); return;});
  }
  
+  module.exports.addRecommendations = async function addRecommendations(username,movie,res) {
+  let dbObj = db.getdb;
+  return await dbObj.collection("users").findOneAndUpdate({"username":username },{$push: {"recommendations": { $each:[{movie_id:movie.movie_id,"poster_path":movie.poster_path}],$slice: -4}} }).catch(error=>{res.sendStatus(404); return;});
+ }
+ 
  module.exports.deleteDiary = async function deleteDiary(username,title,timestamp,favorite,res) {
   let dbObj = db.getdb;
   return await dbObj.collection("users").findOneAndUpdate({"username":username},{ $pull: { movies_watched_titles: { movie_title:title, timestamp:timestamp, favorite:favorite }}}).catch(error=>{res.sendStatus(404); return;});

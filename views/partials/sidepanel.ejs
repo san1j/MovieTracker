@@ -1,6 +1,7 @@
 <div class="text-white font-weight-bold">
   <h3 style="color:#d3d3d3">Top Reviewers</h3> 
-    <% users.forEach(obj=>{ %> 
+  <% var reviewers = users.slice(0,6) %>
+    <% reviewers.forEach(obj=>{ %> 
     <a href="/users/<%=obj.username%>" class="font-weight-bold" style="color:#add8e6"><p><%=obj.username%>  <small class="text-secondary">-<%=obj.review_count%> reviews </small></p> <hr></a>
      <% }); %>
 </div>

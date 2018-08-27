@@ -34,6 +34,18 @@
              <% }); %>
         </div>
           
+        <% if(req.user) {%>
+         <div class="col-md-12 pull-left" style=" margin-top:3%;color:#dcdcdc;">
+            Movie recommendations based on your favorites <hr style ="border-color:#808080;">
+         </div>
+        <div class="col-md-12 pull-left" id="rec">
+           <% users.recommendations.forEach(movie=>{ %> 
+             <a href="/movies/<%=movie.movie_id%>">
+             <img src = <%=movie.poster_path%> style="margin-right:.2%;margin-left:5%; border:3px solid white;" > </a>  
+             <% }); %>
+        </div>
+          <% } %>
+          
          <div class="col-md-12 pull-left" style=" margin-top:3%;margin-bottom:13%;color:#dcdcdc">
              Recently reviewed <hr style ="border-color:#808080;">
                 <% user_reviews.forEach(obj=>{ %> 
