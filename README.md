@@ -15,6 +15,9 @@ Password: password
 
 ## Project pics
 
+<img width="1279" alt="screen shot 2018-08-23 at 7 41 29 am" src="https://user-images.githubusercontent.com/36819928/44754926-f8094f00-aaf1-11e8-8737-c0af601aff9b.png">
+<img width="1278" alt="screen shot 2018-08-27 at 1 18 39 pm" src="https://user-images.githubusercontent.com/36819928/44754928-fa6ba900-aaf1-11e8-9c8b-702353deb8ab.png">
+<img width="1277" alt="screen shot 2018-08-27 at 1 16 08 pm" src="https://user-images.githubusercontent.com/36819928/44754932-fcce0300-aaf1-11e8-9bca-7ba623addd41.png">
 
 ## Config
 Movie data is from [TMDb](https://www.themoviedb.org). Obtain an API key from TMDb by following the instructions [here](https://developers.themoviedb.org/3/getting-started/introduction).
