@@ -13,6 +13,9 @@ Use the following username and password to login:
 Username: username\
 Password: password
 
+## Project pics
+
+
 ## Config
 Movie data is from [TMDb](https://www.themoviedb.org). Obtain an API key from TMDb by following the instructions [here](https://developers.themoviedb.org/3/getting-started/introduction).
 
