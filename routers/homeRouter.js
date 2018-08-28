@@ -19,5 +19,9 @@ module.exports = home;
                  .catch(error=>{res.sendStatus(404); return;})
  });
 
+ home.get('/About', queries.asyncMiddleware,(req, res)=>{
+           res.render("about",{"req":req})
+ });
+
  
  
