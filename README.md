@@ -3,16 +3,6 @@
 A Node.js+Express.js app for tracking/logging movies
 
 
-## Link to the project website
-[Live project website](https://movie-tracker-node.herokuapp.com)
-
-It might take a while to load the first time
-
-Use the following username and password to login:
-
-Username: username\
-Password: password
-
 ## Project pics
 
 <img width="1279" alt="screen shot 2018-08-23 at 7 41 29 am" src="https://user-images.githubusercontent.com/36819928/44754926-f8094f00-aaf1-11e8-8737-c0af601aff9b.png">
