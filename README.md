@@ -1,6 +1,6 @@
 # MovieTracker
 
-A Node.js+Express.js app for tracking/logging movies
+A Node.js+Express.js/ MERN stack app for tracking/logging movies
 
 
 ## Project pics
